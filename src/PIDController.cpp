@@ -65,7 +65,7 @@ void PIDController::minimize (double newMinimize) {
 }
 
 // Getters
-double PIDController::getOutput () {
+int16_t PIDController::getOutput () {
   return output;
 }
 
