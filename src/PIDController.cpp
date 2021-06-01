@@ -32,7 +32,7 @@ void PIDController::begin () {
   init = true;
 }
 
-void PIDController::setpoint (double newSetpoint) {
+void PIDController::setpoint (int16_t newSetpoint) {
   setPoint = newSetpoint;
 }
 
@@ -70,7 +70,7 @@ int16_t PIDController::getOutput () {
 }
 
 
-int16_t PIDController::compute (double sensor, String graph, String verbose) {
+int16_t PIDController::compute (int16_t sensor, String graph, String verbose) {
   // Return false if it could not execute;
   // This is the actual PID algorithm executed every loop();
 
