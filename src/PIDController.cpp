@@ -70,7 +70,7 @@ double PIDController::getOutput () {
 }
 
 
-double PIDController::compute (double sensor, String graph, String verbose) {
+int16_t PIDController::compute (double sensor, String graph, String verbose) {
   // Return false if it could not execute;
   // This is the actual PID algorithm executed every loop();
 

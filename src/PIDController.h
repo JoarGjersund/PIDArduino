@@ -18,7 +18,7 @@ class PIDController {
     PIDController();
 
     // Methods - double
-    double compute(double input, String graph = NOGRAPH, String verbose = NOVERBOSE);
+    int16_t compute(double input, String graph = NOGRAPH, String verbose = NOVERBOSE);
 
     // Methods - void
     void begin();
@@ -28,7 +28,7 @@ class PIDController {
     void minimize(double newMinimize);
 
     // Methods - double, getters
-    double getOutput();
+    int16_t getOutput();
   private:
     // Methods
     void printGraph(double sensorInput, String verbose);
@@ -37,26 +37,26 @@ class PIDController {
     unsigned long lastTime;
 
     // Variables - double
-    double output;
-    double lastErr;
-    double timeChanged;
+    int16_t output;
+    int16_t lastErr;
+    float timeChanged;
 
     // Variables - double, error variables
-    double error;
-    double errSum;
-    double dErr;
+    int16_t error;
+    int16_t errSum;
+    int16_t dErr;
 
     // Variables - bool
     bool doLimit;
     bool init;
 
     // Variables - double - tuining
-    double Kp;
-    double Ki;
-    double Kd;
-    double divisor;
-    double minOut;
-    double maxOut;
-    double setPoint;
+    float Kp;
+    float Ki;
+    float Kd;
+    float divisor;
+    int16_t minOut;
+    int16_t maxOut;
+    int16_t setPoint;
 };
 #endif
