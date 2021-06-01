@@ -24,7 +24,7 @@ class PIDController {
     void begin();
     void tune(double _Kp, double _Ki, double _Kd);
     void limit(double min, double max);
-    void setpoint(double newSetpoint);
+    void setpoint(int16_t newSetpoint);
     void minimize(double newMinimize);
 
     // Methods - double, getters
