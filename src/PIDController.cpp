@@ -2,9 +2,9 @@
 
 PIDController::PIDController () {
   // Variables - double
-  double output;
-  double lastErr;
-  double errSum;
+  int16_t output;
+  int16_t lastErr;
+  int16_t errSum;
 
   // Variables - long
   unsigned long lastTime;
@@ -14,13 +14,13 @@ PIDController::PIDController () {
   bool init;
 
   // Variables - double - tuining
-  double Kp;
-  double Ki;
-  double Kd;
-  double divisor;
-  double minOut;
-  double maxOut;
-  double setPoint;
+  float Kp;
+  float Ki;
+  float Kd;
+  float divisor;
+  int16_t minOut;
+  int16_t maxOut;
+  int16_t setPoint;
 }
 
 void PIDController::begin () {
@@ -78,19 +78,19 @@ double PIDController::compute (double sensor, String graph, String verbose) {
   if (!init) return 0;
 
   // Calculate time difference since last time executed
-  unsigned long now = millis();
-  double timeChange = (double)(now - lastTime);
+  unsigned long now = micros();
+  float timeChange = (float)(now - lastTime)/1000;
 
   // Calculate error (P, I and D)
-  double error = setPoint - sensor;
+  int16_t error = setPoint - sensor;
   errSum += error * timeChange;
   if (doLimit) {
     errSum = constrain(errSum, minOut * 1.1, maxOut * 1.1); 
   }
-  double dErr = (error - lastErr) / timeChange;
+  int16_t dErr = (error - lastErr) / timeChange;
 
   // Calculate the new output by adding all three elements together
-  double newOutput = (Kp * error + Ki * errSum + Kd * dErr) / divisor;
+  int16_t newOutput = (Kp * error + Ki * errSum + Kd * dErr) / divisor;
 
   // If limit is specifyed, limit the output
   if (doLimit) {
